@@ -1,1 +1,10 @@
-<h1>hola mundo</h1>
+<div class="main-container">
+    <!-- <div class="prueba-name" *ngIf="username; else modalForm">
+    </div> -->
+    <app-container-chat *ngIf="username; else modalForm"></app-container-chat>
+    <ng-template #modalForm>
+        <div class="modal">
+            <app-modal-name></app-modal-name>
+        </div>
+    </ng-template>
+</div>

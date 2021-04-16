@@ -1,0 +1,9 @@
+.chat-head{
+    @apply w-full bg-green-800 h-1/10 flex items-center;
+}
+h1{
+    @apply text-5xl flex-1;
+}
+.user-numbers{
+    @apply flex flex-col flex-1 justify-center text-2xl;
+}

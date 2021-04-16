@@ -1,0 +1,19 @@
+div{
+    @apply h-9/10;
+}
+.content-msg{
+    @apply bg-red-900 h-9/10 opacity-10;
+}
+.msg{
+    @apply text-black;
+}
+.msg-btn{
+    @apply w-full h-full flex justify-around ;
+}
+textarea{
+    @apply w-8/12 h-14 resize-none border rounded-md;
+}
+
+button{
+    @apply bg-blue-500 text-white w-3/12;
+}
