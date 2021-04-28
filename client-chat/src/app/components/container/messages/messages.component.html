@@ -1,0 +1,10 @@
+<div class="self-message" *ngIf="selfUser; else receivedMsg">
+    <h2>{{msg.user}}</h2>
+    <p>{{msg.text}}</p>
+</div>
+<ng-template #receivedMsg>
+    <div class="message">
+        <h2>{{msg.user}}</h2>
+        <p>{{msg.text}}</p>
+    </div>
+</ng-template>

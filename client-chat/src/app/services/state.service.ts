@@ -22,4 +22,8 @@ export class StateService {
   public emitNumber(numUsers:number):void{
     this.numberUsers$.next(numUsers)
   }
+
+  public getName(): string{
+    return this.username;
+  }
 }

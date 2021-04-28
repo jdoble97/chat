@@ -1,9 +1,10 @@
-<div>
+<div class="chat-body">
     <div class="content-msg">
-
+        <ng-template appDynamicHost></ng-template>
+        <!-- <app-messages></app-messages> -->
     </div>
     <div class="msg">
-        <form action="">
+        <form action="" (submit)="sendMessage($event)">
             <div class="msg-btn">
                 <textarea name="msg" id="msg"></textarea>
                 <button>Enviar</button>

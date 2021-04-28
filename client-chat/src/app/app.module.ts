@@ -8,6 +8,8 @@ import { StateService } from './services/state.service';
 import { ContainerChatComponent } from './components/container-chat/container-chat.component';
 import { ChatHeadComponent } from './components/container/chat-head/chat-head.component';
 import { ChatBodyComponent } from './components/container/chat-body/chat-body.component';
+import { MessagesComponent } from './components/container/messages/messages.component';
+import { DynamicHostDirective } from './directives/dynamic-host.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ChatBodyComponent } from './components/container/chat-body/chat-body.co
     ModalNameComponent,
     ContainerChatComponent,
     ChatHeadComponent,
-    ChatBodyComponent
+    ChatBodyComponent,
+    MessagesComponent,
+    DynamicHostDirective
   ],
   imports: [
     BrowserModule,

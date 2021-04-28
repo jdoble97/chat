@@ -11,7 +11,7 @@ import { StateService } from './services/state.service';
 export class AppComponent {
 
   title = 'client-chat';
-  username:string
+  username:string="jorge"
   subscription:Subscription
   constructor(private userService: StateService){
     this.subscription = this.userService.getSubject().subscribe(value=>{

@@ -1,19 +1,20 @@
-div{
-    @apply h-9/10;
+.chat-body{
+    @apply h-9/10 flex flex-col;
 }
 .content-msg{
-    @apply bg-red-900 h-9/10 opacity-10;
+    @apply bg-red-900 bg-opacity-25 flex-1 overflow-y-auto;
 }
+
 .msg{
-    @apply text-black;
+    @apply text-black w-screen;
 }
 .msg-btn{
-    @apply w-full h-full flex justify-around ;
+    @apply w-full h-full flex justify-between ;
 }
 textarea{
     @apply w-8/12 h-14 resize-none border rounded-md;
 }
 
 button{
-    @apply bg-blue-500 text-white w-3/12;
+    @apply bg-red-500 text-white w-3/12;
 }

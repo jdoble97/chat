@@ -1,0 +1,13 @@
+.message{
+    @apply bg-blue-500 w-11/12 rounded-md ml-1 mt-1 mb-2;
+}
+
+.self-message{
+    @apply bg-green-500 w-11/12 rounded-md mt-1 mb-2 ml-6;
+}
+.self-message *{
+    @apply text-right;
+}
+h2{
+    @apply text-black;
+}
