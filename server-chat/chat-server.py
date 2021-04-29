@@ -2,7 +2,7 @@ import asyncio
 from asyncio.streams import start_server
 import websockets
 from clases import Server, OperationSocket
-
+import json
 # clients = dict()
 clients = Server.ServerWS()
 operations = OperationSocket.OperationSocket()
@@ -23,10 +23,16 @@ async def register(websock):
     '''
     Añadimos al usuario al diccionario de sockets
     '''
-    await websock.send('Escriba su nombre: ')
-    nameUser = await websock.recv()
-    clients.register(websock, nameUser)
-    await notify_new_client(websock)
+    print('Pidiendo nombre')
+    msg_json = json.dumps({'message':'Bienvenido, escriba su nombre ha mostrar en el chat'})
+    await websock.send(msg_json)
+    try:
+        nameUser = await websock.recv()
+        print('Nombre del usuario', nameUser, type(nameUser))
+        clients.register(websock, nameUser)
+        await notify_new_client(websock)
+    except websockets.ConnectionClosed:
+        print('Cliente desconectado antes de tiempo')
 
 
 async def unregister(websock):
@@ -47,11 +53,13 @@ async def handler_conn(websocket, path):
         async for messages in websocket:
             for client in clients.get_clients():
                 if client is not websocket:
-                    await operations.send_msg(client, clients.get_client(websocket), messages)
+                    await operations.send_msg(client, messages)
 
     # except websockets.exceptions.ConnectionClosed:
     #     print('Sesion cerrada desde el cliente')
     #     await unregister(websocket)
+    except websockets.ConnectionClosedError:
+        print('Error en cierre de conexion')
     finally:
         print('Sesion cerrada ')
         await unregister(websocket)

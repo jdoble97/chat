@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Subscription } from 'rxjs';
+import { ChatService } from './services/chat.service';
 import { StateService } from './services/state.service';
 
 @Component({
@@ -11,13 +12,14 @@ import { StateService } from './services/state.service';
 export class AppComponent {
 
   title = 'client-chat';
-  username:string="jorge"
+  username:string
   subscription:Subscription
   constructor(private userService: StateService){
     this.subscription = this.userService.getSubject().subscribe(value=>{
       this.username = value
       this.cancelSubscription()
     })
+
   }
   showState(){
     console.log('state user', this.username);
