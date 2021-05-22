@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, auto
 
 class ServerWS:
     def __init__(self) -> None:
@@ -14,7 +14,12 @@ class ServerWS:
         return self.clients
     def get_client(self, ws):
         return self.clients.get(ws)
-# class ResponseEnum(Enum):
-#     new_client = 1
-#     closed_conn = 2
-#     msg_to_send = 3
+class ResponseEnum(Enum):
+    current_clients = auto()
+    left_client = auto()
+    msg_to_client = auto()
+
+class Response:
+    def __init__(self, resp_enum:ResponseEnum, msg:str=None) -> None:
+        self.type = resp_enum.value
+        self.data = msg

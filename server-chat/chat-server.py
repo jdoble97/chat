@@ -8,24 +8,27 @@ clients = Server.ServerWS()
 operations = OperationSocket.OperationSocket()
 
 
+# async def notify_new_client(client_not_send):
+#     if clients.check_clients():
+#         # await asyncio.wait([client.send(messages) for client in clients if client is not client_not_send])
+#         for client in clients.get_clients():
+#             if client is not client_not_send:
+#                 await operations.notify_current_clients(client, clients.get_clients().get(client_not_send))
 async def notify_new_client(client_not_send):
     if clients.check_clients():
         # await asyncio.wait([client.send(messages) for client in clients if client is not client_not_send])
         for client in clients.get_clients():
-            if client is not client_not_send:
-                await operations.notify_new_client(client, clients.get_clients().get(client_not_send))
+            await operations.notify_current_clients(client, len(clients.get_clients()))
 
 async def notify_logout(name):
     if clients.check_clients():
-        await asyncio.wait([operations.nofity_exited_client(client, name) for client in clients.get_clients()])
+        await asyncio.wait([operations.notify_exited_client(client, len(clients.get_clients())) for client in clients.get_clients()])
 
 async def register(websock):
     '''
     Añadimos al usuario al diccionario de sockets
     '''
     print('Pidiendo nombre')
-    msg_json = json.dumps({'message':'Bienvenido, escriba su nombre ha mostrar en el chat'})
-    await websock.send(msg_json)
     try:
         nameUser = await websock.recv()
         print('Nombre del usuario', nameUser, type(nameUser))

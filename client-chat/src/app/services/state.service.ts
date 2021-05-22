@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ActionNumber } from '../entities/actionNumberChat';
 import { Message } from '../entities/message';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Message } from '../entities/message';
 export class StateService {
 
   private userSubject: Subject<string> = new Subject<string>();
-  private numberUsers$: Subject<number> = new Subject<number>();
+  private numberUsers$: Subject<ActionNumber> = new Subject<ActionNumber>();
   private username: Message
   constructor() { }
 
@@ -20,7 +21,7 @@ export class StateService {
     return this.userSubject
   }
   ///////////////////
-  public emitNumber(numUsers:number):void{
+  public emitNumber(numUsers:ActionNumber):void{
     this.numberUsers$.next(numUsers)
   }
 
@@ -29,5 +30,9 @@ export class StateService {
   }
   public getUser(): Message{
     return this.username
+  }
+  ///////
+  public getNumberSubject(): Subject<ActionNumber>{
+    return this.numberUsers$;
   }
 }
