@@ -1,10 +1,8 @@
-import enum
+import os
 
-
-class Test(enum.Enum):
-    sun = enum.auto()
-    mon = enum.auto()
-    fri = enum.auto()
-
-
-print(Test.fri.value)
+try:
+    name = os.environ['ADDRESS']
+except KeyError:
+    print('No hay ninguna tecla con eso')
+    name = 'jorge'
+print(name)

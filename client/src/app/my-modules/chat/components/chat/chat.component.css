@@ -1,0 +1,12 @@
+.chat{
+    @apply flex flex-col h-screen;
+}
+.chat h1{
+    @apply text-2xl font-bold;
+}
+.chat-header{
+    @apply bg-green-700 h-16 text-center;
+}
+.chat-body{
+    @apply flex flex-col bg-red-400 flex-1;
+}

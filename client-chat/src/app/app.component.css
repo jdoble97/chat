@@ -1,6 +1,0 @@
-.main-container{
-    @apply w-full h-screen;
-}
-.modal{
-    @apply h-full flex items-center justify-center;
-}

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Prueba de websocket</title>
+    </head>
+    <body>
+        <h2>Implementacion de sockets</h2>
+        <script>
+            ws = new WebSocket('ws://localhost:7777')
+            ws.onopen= (event)=>{
+                console.log('CONEXION ABIERTA');
+            }
+            ws.onmessage = (event)=>{
+                console.log('MENSAJE RECIBIDO DEL SERVIDOR:',event.data );
+            }
+            ws.onclose = (event)=>{
+                console.log('CONEXION CERRADA');
+            }
+            window.ws = ws
+        </script>
+    </body>
+</html>

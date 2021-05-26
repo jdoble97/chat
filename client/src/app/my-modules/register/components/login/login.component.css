@@ -1,0 +1,16 @@
+.chat-container {
+    @apply flex flex-col sm:flex-row w-full h-screen;
+}
+
+.btn-login {
+    @apply bg-blue-600 h-2/6 w-11/12 sm:w-5/12 rounded-md m-auto focus:outline-none;
+}
+
+.btn-logup {
+    @apply bg-green-600 h-2/6 w-11/12 sm:w-5/12 rounded-md m-auto focus:outline-none;
+}
+
+button{
+    @apply text-white text-3xl font-bold;
+}
+
