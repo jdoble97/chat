@@ -1,0 +1,12 @@
+form{
+    @apply bg-green-500 h-full flex;
+}
+textarea{
+    @apply text-black flex-1 resize-none;
+}
+button{
+    @apply bg-blue-700 w-1/5;
+}
+*{
+    @apply focus:outline-none;
+}

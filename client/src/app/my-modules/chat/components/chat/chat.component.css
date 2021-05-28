@@ -1,3 +1,6 @@
+*{
+    @apply text-white;
+}
 .chat{
     @apply flex flex-col h-screen;
 }
@@ -8,5 +11,12 @@
     @apply bg-green-700 h-16 text-center;
 }
 .chat-body{
-    @apply flex flex-col bg-red-400 flex-1;
+    @apply flex flex-col flex-1;
+}
+
+.chat-form{
+    @apply h-20;
+}
+.chat-msg{
+    @apply h-full;
 }
