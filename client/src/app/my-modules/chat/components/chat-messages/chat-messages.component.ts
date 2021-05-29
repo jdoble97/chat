@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ChatWsService } from 'src/app/my-modules/socket-chat/chat-ws.service';
 
 @Component({
   selector: 'app-chat-messages',
@@ -9,21 +10,24 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ChatMessagesComponent implements OnInit {
 
   public groupMessage!: FormGroup;
-  constructor() { }
+  constructor(private chat: ChatWsService) { }
 
   ngOnInit(): void {
     this.createReactiveForm();
   }
 
-  public createReactiveForm(): void{
+  public createReactiveForm(): void {
     this.groupMessage = new FormGroup({
-      message: new FormControl(''),
-      messages: new FormControl(''),
+      message: new FormControl('')
     })
   }
 
-  public onSubmit(){
-    console.log('Contenido del mensaje', this.groupMessage.value);
-    
+  public onSubmit() {
+    let { message } = this.groupMessage.value
+    if(message.trim().length>0){
+      this.chat.getSubject().next(message)
+    }
+    this.groupMessage.setValue({message:''});
   }
+
 }

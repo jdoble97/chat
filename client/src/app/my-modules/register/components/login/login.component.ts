@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+import { ChatWsService } from 'src/app/my-modules/socket-chat/chat-ws.service';
 import { UserStateService } from 'src/app/my-modules/socket-chat/user-state.service';
 
 
@@ -12,8 +13,8 @@ import { UserStateService } from 'src/app/my-modules/socket-chat/user-state.serv
 export class LoginComponent implements OnInit {
 
   @ViewChild('loginSwal')
-  public readonly loginSwal!: SwalComponent;
-  constructor(private state: UserStateService, private router: Router) { }
+  public readonly loginSwal!: SwalComponent;    
+  constructor(private state: UserStateService, private router: Router, private chat: ChatWsService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
         console.log(values);
         if (values.isConfirmed && values.value.length > 1) {
           this.state.setName(values.value)
+          this.chat.connect(values.value)
           this.router.navigate(['chat'])
         }
       })

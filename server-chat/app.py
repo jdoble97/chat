@@ -51,8 +51,6 @@ async def notify_logout(name):
     if server_ws.get_size() > 0:
         await asyncio.wait([asyncio.create_task(operations_ws.notify_exited_client(client, server_ws.get_size()))
                             for client in server_ws.get_clients()])
-        await asyncio.wait([asyncio.create_task(operations_ws.notify_current_clients(client, server_ws.get_size())) for client in server_ws.get_clients()])
-
 
 async def handle_connection(ws, path):
     '''

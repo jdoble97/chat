@@ -20,6 +20,6 @@ class OperationSocket:
 
     async def notify_exited_client(self, ws, size):
         response_exited = json.dumps(
-            Response(ResponseEnum.left_client, size).__dict__)
+            Response(ResponseEnum.left_client, {'number_of_clients': size}).__dict__)
         print(response_exited)
         await ws.send(response_exited)

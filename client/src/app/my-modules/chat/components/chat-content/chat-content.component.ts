@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatWsService } from 'src/app/my-modules/socket-chat/chat-ws.service';
 
 @Component({
   selector: 'app-chat-content',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chat: ChatWsService) { }
 
   ngOnInit(): void {
+    this.chat.getSubject().subscribe(data=>{
+      console.log('DATOS DESDE EL SERVIDOR', data);
+      
+    })
   }
 
 }
